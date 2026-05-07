@@ -11,6 +11,9 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+html {
+    scroll-behavior: smooth;
+}
 article, aside, figcaption, figure, footer, header, main, nav, section {
     display: block;
 }

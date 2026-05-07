@@ -41,81 +41,6 @@
   z-index: 1;
 }
 
-.back-link {
-  position: absolute;
-  top: 28px;
-  left: 32px;
-  z-index: 2;
-  color: rgba(255, 255, 255, 0.80);
-  text-decoration: none;
-  font-size: 0.88rem;
-  letter-spacing: 0.04em;
-  transition: color 0.2s ease;
-
-  &:hover { color: #fff; }
-}
-
-// Mirrors .header from _header.scss — absolute-centered in hero
-.hero-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  text-align: center;
-  color: #fff;
-  width: 90%;
-  max-width: 720px;
-
-  h1 {
-    font-size: 50px;
-    display: block;
-    line-height: 1;
-    color: #fff;
-    margin: 0 0 14px;
-
-    @media only screen and (min-width: $cut) {
-      font-size: 80px;
-    }
-  }
-
-  p {
-    font-size: 17px;
-    color: rgba(255, 255, 255, 0.82);
-    margin: 0 0 20px;
-    line-height: 1.55;
-
-    @media only screen and (min-width: $cut) {
-      font-size: 21px;
-    }
-  }
-}
-
-.project-skills {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-
-  li {
-    border: 1px solid rgba(255, 255, 255, 0.50);
-    border-radius: 4px;
-    padding: 3px 10px;
-    font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.85);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-
-    i { font-size: 1em; }
-  }
-}
-
 // .down is defined in _header.scss; elevate it above the overlay here
 .project-hero .down {
   z-index: 2;
@@ -149,16 +74,6 @@
 }
 
 // ─── Content body ─────────────────────────────────────────────────────────────
-
-#project {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 52px 20px 96px;
-
-  @media only screen and (min-width: $cut) {
-    padding: 64px 20px 112px;
-  }
-}
 
 .project-body {
   color: $sec;
@@ -216,15 +131,6 @@
     margin: 1em 0;
   }
 
-  img.lib-icon {
-    display: inline;
-    height: 1.1em;
-    width: auto;
-    vertical-align: middle;
-    border-radius: 2px;
-    margin: 0 0.3em;
-  }
-
   ul,
   ol {
     padding-left: 1.5em;
@@ -236,8 +142,7 @@
     border-collapse: collapse;
     margin: 1.5em 0;
     font-size: 0.92rem;
-    overflow-x: auto;
-    display: block;
+    table-layout: fixed;
 
     thead tr {
       background: $main;
@@ -255,11 +160,30 @@
       &:last-child  { border-radius: 0 6px 6px 0; }
     }
 
+    th:first-child,
+    td:first-child {
+      width: 52%;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 26%;
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+      width: 22%;
+    }
+
     td {
       padding: 10px 20px;
       color: $sec;
       white-space: nowrap;
       border-bottom: 1px solid lighten($main, 65%);
+    }
+
+    td:first-child {
+      white-space: normal;
     }
 
     tbody tr:last-child td { border-bottom: none; }

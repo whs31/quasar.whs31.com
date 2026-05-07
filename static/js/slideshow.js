@@ -1,6 +1,4 @@
 (function () {
-  new SweetScroll({});
-
   var slides = document.querySelectorAll('.slide');
   var dots   = document.querySelectorAll('.slide-dot');
   if (slides.length < 2) return;

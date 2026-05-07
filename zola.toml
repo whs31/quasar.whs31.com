@@ -1,7 +1,7 @@
-base_url = "https://whs31.com"
+base_url = "https://quasar-sar.ru"
 
-title = "QuaSAR"
-description = "Программный комплекс формирования радиолокационных изображений с синтезированной апертурой"
+title = "«Квазар»"
+description = "Малогабаритная радиолокационная станция с синтезированной апертурой для беспилотных летательных аппаратов"
 
 compile_sass = true
 build_search_index = true
@@ -15,11 +15,9 @@ github_alerts = true
 theme = "catppuccin-mocha"
 
 [extra]
-username = "Квазар"
-user_title = "Малогабаритная радиолокационная станция с синтезированной апертурой"
 email = "kernel386@mail.ru"
 github_username = "quasar-project"
 
 [languages.en]
 title = "QuaSAR"
-description = "Synthetic Aperture Radar Imaging Software Package"
+description = "Compact synthetic aperture radar station for UAVs"

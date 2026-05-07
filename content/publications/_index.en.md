@@ -5,4 +5,4 @@ template = "publications.html"
 sort_by = "date"
 +++
 
-TODO: brief introduction to the publications section — description of research areas and list of conferences/journals.
+List of scientific publications related to the QuaSAR software and hardware system.
