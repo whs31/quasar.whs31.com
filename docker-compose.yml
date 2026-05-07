@@ -1,0 +1,14 @@
+services:
+  dev:
+    image: ghcr.io/getzola/zola:v0.22.1
+    command: serve --interface 0.0.0.0 --port 1111 --drafts
+    volumes:
+      - .:/site
+    working_dir: /site
+    ports:
+      - "1111:1111"
+
+  prod:
+    build: .
+    ports:
+      - "8080:80"

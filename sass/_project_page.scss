@@ -1,0 +1,273 @@
+// ─── Hero / Slideshow ────────────────────────────────────────────────────────
+
+.project-hero {
+  position: relative;
+  background: $main;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.slideshow {
+  position: absolute;
+  inset: 0;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+
+  &.active { opacity: 1; }
+
+  img,
+  video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba($main, 0.20) 0%,
+    rgba($main, 0.70) 100%
+  );
+  z-index: 1;
+}
+
+.back-link {
+  position: absolute;
+  top: 28px;
+  left: 32px;
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.80);
+  text-decoration: none;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease;
+
+  &:hover { color: #fff; }
+}
+
+// Mirrors .header from _header.scss — absolute-centered in hero
+.hero-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  width: 90%;
+  max-width: 720px;
+
+  h1 {
+    font-size: 50px;
+    display: block;
+    line-height: 1;
+    color: #fff;
+    margin: 0 0 14px;
+
+    @media only screen and (min-width: $cut) {
+      font-size: 80px;
+    }
+  }
+
+  p {
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.82);
+    margin: 0 0 20px;
+    line-height: 1.55;
+
+    @media only screen and (min-width: $cut) {
+      font-size: 21px;
+    }
+  }
+}
+
+.project-skills {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+
+  li {
+    border: 1px solid rgba(255, 255, 255, 0.50);
+    border-radius: 4px;
+    padding: 3px 10px;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    i { font-size: 1em; }
+  }
+}
+
+// .down is defined in _header.scss; elevate it above the overlay here
+.project-hero .down {
+  z-index: 2;
+}
+
+.slide-dots {
+  position: absolute;
+  bottom: 32px;
+  right: 28px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.slide-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.40);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+
+  &.active {
+    background: #fff;
+    transform: scale(1.3);
+  }
+
+  &:hover { background: rgba(255, 255, 255, 0.75); }
+}
+
+// ─── Content body ─────────────────────────────────────────────────────────────
+
+#project {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 52px 20px 96px;
+
+  @media only screen and (min-width: $cut) {
+    padding: 64px 20px 112px;
+  }
+}
+
+.project-body {
+  color: $sec;
+  line-height: 1.75;
+
+  h2 {
+    color: $main;
+    margin: 2em 0 0.4em;
+    font-size: 1.35rem;
+  }
+
+  h3 {
+    color: $main;
+    margin: 1.6em 0 0.3em;
+    font-size: 1.05rem;
+  }
+
+  p { margin: 0 0 1em; }
+
+  a {
+    color: #4f7ef7;
+    text-decoration: underline;
+    text-decoration-color: rgba(79, 126, 247, 0.35);
+    text-underline-offset: 3px;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    &:hover {
+      color: #2e5ddc;
+      text-decoration-color: rgba(46, 93, 220, 0.7);
+    }
+  }
+
+  strong { color: $main; font-weight: 600; }
+
+  code {
+    background: lighten($main, 68%);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.88em;
+    color: $main;
+  }
+
+  pre {
+    background: lighten($main, 68%);
+    padding: 16px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 1.5em 0;
+
+    code { background: transparent; padding: 0; }
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin: 1em 0;
+  }
+
+  img.lib-icon {
+    display: inline;
+    height: 1.1em;
+    width: auto;
+    vertical-align: middle;
+    border-radius: 2px;
+    margin: 0 0.3em;
+  }
+
+  ul,
+  ol {
+    padding-left: 1.5em;
+    margin: 0 0 1em;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    font-size: 0.92rem;
+    overflow-x: auto;
+    display: block;
+
+    thead tr {
+      background: $main;
+      color: #fff;
+    }
+
+    th {
+      padding: 11px 20px;
+      text-align: left;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+
+      &:first-child { border-radius: 6px 0 0 6px; }
+      &:last-child  { border-radius: 0 6px 6px 0; }
+    }
+
+    td {
+      padding: 10px 20px;
+      color: $sec;
+      white-space: nowrap;
+      border-bottom: 1px solid lighten($main, 65%);
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+
+    tbody tr:hover td { background: lighten($main, 70%); }
+  }
+
+  .perf-fast { color: #16a34a; font-weight: 600; }
+  .perf-mid  { color: #d97706; font-weight: 600; }
+  .perf-slow { color: #dc2626; font-weight: 600; }
+}

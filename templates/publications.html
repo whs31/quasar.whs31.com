@@ -1,0 +1,60 @@
+{% import "macros.html" as macros %}
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+  {{ macros::head() }}
+
+  <body>
+
+    {% if lang == "ru" %}
+      {{ macros::page_nav(lang=lang, subtitle="Научные публикации",
+          ru_url=config.base_url ~ "/publications/",
+          en_url=config.base_url ~ "/en/publications/") }}
+    {% else %}
+      {{ macros::page_nav(lang=lang, subtitle="Publications",
+          ru_url=config.base_url ~ "/publications/",
+          en_url=config.base_url ~ "/en/publications/") }}
+    {% endif %}
+
+    <main class="post-wrap">
+      <div class="publications-container">
+
+        {% if section.content %}
+        <div class="publications-intro project-body">
+          {{ section.content | safe }}
+        </div>
+        {% endif %}
+
+        <div class="publications-list">
+          {% for page in section.pages %}
+          <a class="pub-card" href="{{ page.permalink }}">
+            <div class="pub-card-inner">
+              <span class="pub-year">{{ page.extra.year | default(value="") }}</span>
+              <h3 class="pub-title">{{ page.title }}</h3>
+              {% if page.extra.authors %}
+              <p class="pub-authors">{{ page.extra.authors | join(sep=", ") }}</p>
+              {% endif %}
+              {% if page.extra.journal %}
+              <p class="pub-journal"><em>{{ page.extra.journal }}</em></p>
+              {% endif %}
+              {% if page.description %}
+              <p class="pub-abstract">{{ page.description }}</p>
+              {% endif %}
+            </div>
+            <span class="pub-arrow">→</span>
+          </a>
+          {% else %}
+          <p class="pub-empty">
+            {% if lang == "ru" %}Публикации появятся здесь.{% else %}Publications will appear here.{% endif %}
+          </p>
+          {% endfor %}
+        </div>
+
+      </div>
+    </main>
+
+    {{ macros::footer() }}
+    {{ macros::google_analytics() }}
+
+  </body>
+</html>

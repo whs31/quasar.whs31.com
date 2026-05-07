@@ -1,0 +1,74 @@
+{% import "macros.html" as macros %}
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+  {{ macros::head() }}
+
+  <body>
+
+    {% if lang == "ru" %}
+      {{ macros::page_nav(lang=lang, subtitle="Научные публикации",
+          ru_url=config.base_url ~ "/publications/" ~ page.slug ~ "/",
+          en_url=config.base_url ~ "/en/publications/" ~ page.slug ~ "/") }}
+    {% else %}
+      {{ macros::page_nav(lang=lang, subtitle="Publications",
+          ru_url=config.base_url ~ "/publications/" ~ page.slug ~ "/",
+          en_url=config.base_url ~ "/en/publications/" ~ page.slug ~ "/") }}
+    {% endif %}
+
+    <main class="post-wrap">
+      <article class="project-body publication-body">
+
+        <div class="pub-meta">
+          <h1>{{ page.title }}</h1>
+          {% if page.extra.authors %}
+          <p class="pub-authors">{{ page.extra.authors | join(sep=", ") }}</p>
+          {% endif %}
+          <p class="pub-details">
+            {% if page.extra.journal %}<em>{{ page.extra.journal }}</em>{% endif %}
+            {% if page.extra.year %}, {{ page.extra.year }}{% endif %}
+          </p>
+          {% if page.description %}
+          <p class="pub-abstract-text">{{ page.description }}</p>
+          {% endif %}
+        </div>
+
+        {% if page.extra.pdf %}
+        <div class="pdf-viewer">
+          <embed
+            src="{{ config.base_url ~ page.extra.pdf }}"
+            type="application/pdf"
+            width="100%"
+            height="800px"
+            title="{{ page.title }}"
+          />
+          <p class="pdf-fallback">
+            {% if lang == "ru" %}
+              Если PDF не отображается, <a href="{{ config.base_url ~ page.extra.pdf }}">скачайте его</a>.
+            {% else %}
+              If the PDF does not display, <a href="{{ config.base_url ~ page.extra.pdf }}">download it</a>.
+            {% endif %}
+          </p>
+        </div>
+        {% else %}
+        <p class="pub-no-pdf">
+          {% if lang == "ru" %}
+            TODO: прикрепите PDF-файл публикации.
+          {% else %}
+            TODO: attach the publication PDF file.
+          {% endif %}
+        </p>
+        {% endif %}
+
+        {% if page.content %}
+        {{ page.content | safe }}
+        {% endif %}
+
+      </article>
+    </main>
+
+    {{ macros::footer() }}
+    {{ macros::google_analytics() }}
+
+  </body>
+</html>

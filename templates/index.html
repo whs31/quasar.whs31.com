@@ -1,0 +1,157 @@
+{% import "macros.html" as macros %}
+
+<!doctype html>
+<html lang="{{ lang }}">
+{{ macros::head() }}
+
+<body>
+  {{ macros::lang_switcher(lang=lang,
+  ru_url=config.base_url ~ "/",
+  en_url=config.base_url ~ "/en/") }}
+
+  {% set slides = section.extra.slides | default(value=[]) %}
+
+  <div class="project-hero main-hero" id="hero">
+
+    {% if slides %}
+    <div class="slideshow">
+      {% for slide in slides %}
+      <div class="slide{% if loop.first %} active{% endif %}">
+        {% if slide.type == "video" %}
+        <video autoplay loop muted playsinline preload="auto">
+          <source src="{{ config.base_url ~ slide.src }}" type="video/mp4">
+        </video>
+        {% else %}
+        <img src="{{ config.base_url ~ slide.src }}" alt="QuaSAR — слайд {{ loop.index }}" />
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="hero-overlay"></div>
+
+    <div class="header">
+      <h1>
+        <span class="site-title">
+          {% if lang == "ru" %}«Квазар»{% else %}QuaSAR{% endif %}
+        </span>
+        <span class="site-description">
+          {% if lang == "ru" %}Малогабаритная радиолокационная станция с синтезированной апертурой{% else %}Compact SAR
+          station for UAVs{% endif %}
+        </span>
+      </h1>
+      <div class="header-icons">
+        <a aria-label="{% if lang == 'ru' %}GitHub репозиторий{% else %}GitHub repository{% endif %}" target="_blank"
+          href="https://github.com/{{ config.extra.github_username }}">
+          <i class="icon fa fa-github-alt" aria-hidden="true"></i>
+        </a>
+        <a aria-label="{% if lang == 'ru' %}Электронная почта{% else %}Email{% endif %}"
+          href="mailto:{{ config.extra.email }}">
+          <i class="icon fa fa-envelope" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="header-links">
+        <a class="link" href="{{ config.base_url }}{% if lang == 'en' %}/en{% endif %}/description/">
+          {% if lang == "ru" %}Описание{% else %}Description{% endif %}
+        </a>
+        <a class="link" href="{{ config.base_url }}{% if lang == 'en' %}/en{% endif %}/demo/">
+          {% if lang == "ru" %}Демонстрация{% else %}Demonstration{% endif %}
+        </a>
+        <a class="link" href="{{ config.base_url }}{% if lang == 'en' %}/en{% endif %}/publications/">
+          {% if lang == "ru" %}Публикации{% else %}Publications{% endif %}
+        </a>
+      </div>
+    </div>
+
+    <a class="down" href="#intro" data-scroll>
+      <i class="icon fa fa-chevron-down" aria-hidden="true"></i>
+    </a>
+
+    {% if slides | length > 1 %}
+    <div class="slide-dots">
+      {% for slide in slides %}
+      <button class="slide-dot{% if loop.first %} active{% endif %}"
+        aria-label="{% if lang == 'ru' %}Слайд {{ loop.index }}{% else %}Slide {{ loop.index }}{% endif %}">
+      </button>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+
+  <section id="intro">
+    <div class="intro-section">
+      <div class="user-details">
+        <h1>{% if lang == "ru" %}О программном-аппаратном комплексе{% else %}About the Software{% endif %}</h1>
+      </div>
+      <div class="intro-content">
+        {% if lang == "ru" %}
+        <p>
+          <strong>«Квазар»</strong> — это программно-аппаратный комплекс, состоящий из малогабаритной радиолокационной
+          станции с синтезированной апертурой антенны и наземной станции управления, обеспечивающей управление режимами
+          работы радиолокационной станции, прием, обработку и автоматическую геопривязку сформированных радиолокационных
+          изображений на географической подложке в реальном времени.
+        </p>
+        <p>
+          Комплекс предназначен для формирования <b>высокодетальных радиолокационных изображений</b> участков земной
+          поверхности
+          вне зависимости от условий освещенности и состояния атмосферы (туман, облачность, осадки).
+        </p>
+        <p>
+          В качестве <b>носителей</b> РЛС могут выступать пилотируемые и беспилотные летательные аппараты самолетного и
+          вертолетного типов, а также мультикоптеры с массой полезной нагрузки более 2 кг.
+        </p>
+        <img src="{{ config.base_url ~ '/img/complex_ru.png' }}" alt="Схема РЛС" style="width:100%" />
+        <h3>Режимы работы</h3>
+        <p>
+        <ul>
+          <li><b>Телескопический</b> - режим, в котором изображение формируется в пределах луча диаграммы направленности
+            антенны. Это позволяет достичь максимальной разрешающей способности, однако охват изображения ограничен
+            поверхностью, захватываемой лучом диаграммы направленности антенны радара</li>
+          <li><b>Полосовой</b> - режим, в котором изображение формируется непрерывно по мере движения носителя
+            («склеивается»
+            из полос). Режим обеспечивает широкий охват земной поверхности на протяжении всего маршрута при сохранении
+            стабильного качества детализации.</li>
+          <li><b>Видео</b> - режим, в котором информация передается потоком, сформированным из отдельных кадров
+            телескопических
+            радиолокационных изображений с временной выборкой: каждый кадр синтезируется независимо из скользящего
+            временного окна голограммы. </li>
+        </ul>
+        </p>
+        {% else %}
+        <p>
+          <strong>QuaSAR</strong> is a high-performance Synthetic Aperture Radar (SAR)
+          image formation software package combining Rust's strict typing and memory safety
+          with the computational power of NVIDIA CUDA parallel architectures.
+        </p>
+        <p>
+          TODO: additional description of the system's purpose and main applications (2–3 sentences).
+        </p>
+        {% endif %}
+        <div class="intro-links">
+          <a class="project-link" href="{{ config.base_url }}{% if lang == 'en' %}/en{% endif %}/description/">
+            {% if lang == "ru" %}Подробнее{% else %}Learn More{% endif %}
+          </a>
+          <a class="project-link" href="{{ config.base_url }}{% if lang == 'en' %}/en{% endif %}/demo/">
+            {% if lang == "ru" %}Демонстрация{% else %}Demonstration{% endif %}
+          </a>
+          <a class="project-link" href="{{ config.base_url }}{% if lang == 'en' %}/en{% endif %}/publications/">
+            {% if lang == "ru" %}Публикации{% else %}Publications{% endif %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% block content %}<p></p>{% endblock content %}
+
+  <footer class="footer">
+    <p>&copy; QuaSAR</p>
+  </footer>
+  <script src="{{ config.base_url ~ '/js/sweet-scroll.min.js' }}"></script>
+  <script src="{{ config.base_url ~ '/js/slideshow.js' }}"></script>
+  {{ macros::google_analytics() }}
+</body>
+
+</html>

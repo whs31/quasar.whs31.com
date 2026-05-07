@@ -1,0 +1,82 @@
+{% import "macros.html" as macros %}
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+  {{ macros::head() }}
+
+  <body>
+
+    {{ macros::lang_switcher(lang=lang, ru_url=config.base_url ~ "/projects/" ~ page.slug ~ "/", en_url=config.base_url ~ "/en/projects/" ~ page.slug ~ "/") }}
+
+    <div class="project-hero">
+
+      <div class="slideshow">
+        {% for slide in page.extra.slides %}
+        <div class="slide{% if loop.first %} active{% endif %}">
+          {% if slide.type == "video" %}
+          <video autoplay loop muted playsinline preload="auto">
+            <source src="{{ config.base_url ~ slide.src }}" type="video/mp4">
+          </video>
+          {% else %}
+          <img src="{{ config.base_url ~ slide.src }}" alt="{{ page.title }} — slide {{ loop.index }}" />
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="hero-overlay"></div>
+
+      <a class="back-link" href="{{ config.base_url }}{% if lang == 'en' %}/en{% endif %}/">← QuaSAR</a>
+
+      <div class="hero-center">
+        <h1>{{ page.title }}</h1>
+        {% if page.description %}
+        <p>{{ page.description }}</p>
+        {% endif %}
+        {% if page.extra.skills %}
+        <ul class="project-skills">
+          {% for skill in page.extra.skills %}
+          <li>
+            {% set icon = macros::skill_icon(skill=skill) | trim %}
+            {% if icon %}<i class="{{ icon }}" aria-hidden="true"></i>{% endif %}
+            {{ skill }}
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+
+      <a class="down" href="#project" data-scroll>
+        <i class="icon fa fa-chevron-down" aria-hidden="true"></i>
+      </a>
+
+      {% if page.extra.slides | length > 1 %}
+      <div class="slide-dots">
+        {% for slide in page.extra.slides %}
+        {% if lang == "ru" %}
+        <button class="slide-dot{% if loop.first %} active{% endif %}" aria-label="Перейти к слайду {{ loop.index }}"></button>
+        {% else %}
+        <button class="slide-dot{% if loop.first %} active{% endif %}" aria-label="Go to slide {{ loop.index }}"></button>
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+
+    </div>
+
+    <section id="project">
+      <article class="project-body">
+        {{ page.content | safe }}
+      </article>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; {{ config.extra.username }}</p>
+    </footer>
+
+    <script src="{{ config.base_url ~ '/js/sweet-scroll.min.js' }}"></script>
+    <script src="{{ config.base_url ~ '/js/slideshow.js' }}"></script>
+    {{ macros::google_analytics() }}
+
+  </body>
+</html>

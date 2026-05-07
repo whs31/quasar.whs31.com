@@ -1,0 +1,27 @@
+* text=auto
+*.c text
+*.h text
+*.cpp text
+*.hpp text
+*.cc text
+*.hh text
+*.cu text
+*.sh text
+*.py text
+*.toml text
+*.yml linguist-detectable=true
+*.json linguist-detectable=true
+*.sh linguist-detectable=true
+*.toml linguist-detectable=true
+*.csv linguist-detectable=true
+*.md linguist-detectable=true
+*.proto linguist-detectable=true
+libs/** linguist-vendored
+src/ne10/** linguist-vendored
+*.gitattributes text
+.gitignore      text
+*.md            text diff=markdown
+# Script Files
+*.sh		text eol=lf
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf

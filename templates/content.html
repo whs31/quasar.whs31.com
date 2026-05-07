@@ -1,0 +1,35 @@
+{% macro about(lang) %}{% endmacro about %}
+
+{% macro projects(lang) %}
+{% if lang == "ru" %}
+  {% set section_projects = "Избранные проекты" %}
+  {% set quasar_img_alt   = "QuaSAR — система формирования РСА-снимков" %}
+  {% set quasar_tags      = "Rust / CUDA|ЦОС / РСА|Встраиваемые системы" %}
+  {% set quasar_desc      = "Высокопроизводительный программный комплекс формирования радиолокационных изображений для радара с синтезированной апертурой. Поддерживает аппаратное ускорение NVIDIA CUDA, телескопический и полосовой режимы съёмки, автофокусировку по минимуму энтропии, синтез видеопотока H.265 и детектирование объектов нейросетью YOLO11 OBB." %}
+  {% set link_check_out   = "Подробнее" %}
+{% else %}
+  {% set section_projects = "Featured Projects" %}
+  {% set quasar_img_alt   = "QuaSAR — SAR image formation system" %}
+  {% set quasar_tags      = "Rust / CUDA|DSP / SAR|Embedded Systems" %}
+  {% set quasar_desc      = "High-Performance Software Package for Synthetic Aperture Radar Imagery. Supports NVIDIA CUDA hardware-accelerated telescopic and strip imaging modes, entropy-based autofocus, H.265 video stream synthesis, and YOLO11 OBB object detection. Targets NVIDIA Jetson Orin and x86_64 Linux." %}
+  {% set link_check_out   = "Check it out" %}
+{% endif %}
+<div class="user-details">
+  <h1>{{ section_projects }}</h1>
+</div>
+<div class="user-projects">
+  <div class="images-right">
+    <img alt="{{ quasar_img_alt }}" src="{{ config.base_url ~ "/img/quasar-preview.png" }}" />
+  </div>
+  <div class="contents">
+    <h3>QuaSAR</h3>
+    <ul>
+      {% for tag in quasar_tags | split(pat="|") %}
+      <li>{{ tag }}</li>
+      {% endfor %}
+    </ul>
+    <p>{{ quasar_desc }}</p>
+    <a class="project-link" href="{{ config.base_url }}{% if lang == "ru" %}/ru{% endif %}/projects/quasar/">{{ link_check_out }}</a>
+  </div>
+</div>
+{% endmacro projects %}
