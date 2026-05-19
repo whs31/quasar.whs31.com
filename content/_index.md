@@ -1,11 +1,11 @@
 +++
 [extra]
 slides = [
-  {src = "/img/quasar-3.jpg",  type = "image"},
+  {src = "/img/quasar-3.png",  type = "image"},
   {src = "/img/quasar-6.png",  type = "image"},
-  {src = "/img/quasar-1.jpg",  type = "image"},
-  {src = "/img/quasar-4.jpg",  type = "image"},
-  {src = "/img/quasar-5.jpg",  type = "image"},
+  {src = "/img/quasar-1.png",  type = "image"},
+  {src = "/img/quasar-4.png",  type = "image"},
+  {src = "/img/quasar-5.png",  type = "image"},
 ]
 
 [[extra.nav_links]]
@@ -81,7 +81,7 @@ href = "/publications/"
 Изображение формируется непрерывно по мере движения носителя («склеивается» из полос).
 Режим обеспечивает широкий охват земной поверхности на протяжении всего маршрута при сохранении стабильного качества детализации.
 
-![Quasar strip](/img/quasar-3.jpg)
+![Quasar strip](/img/quasar-strip.png)
 
 ### Видеопоток
 Видеорежим реализован в виде покадрового синтезирования телескопических радиолокационных изображений с временной выборкой: каждый кадр синтезируется независимо из скользящего временного окна голограммы. Результат кодируется в **H.265/HEVC** через FFmpeg с настраиваемыми параметрами качества (CRF 18–28) и частотой до 120 кадров/сек.

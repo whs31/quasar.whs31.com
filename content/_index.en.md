@@ -1,11 +1,11 @@
 +++
 [extra]
 slides = [
-  {src = "/img/quasar-3.jpg",  type = "image"},
+  {src = "/img/quasar-3.png",  type = "image"},
   {src = "/img/quasar-6.png",  type = "image"},
-  {src = "/img/quasar-1.jpg",  type = "image"},
-  {src = "/img/quasar-4.jpg",  type = "image"},
-  {src = "/img/quasar-5.jpg",  type = "image"},
+  {src = "/img/quasar-1.png",  type = "image"},
+  {src = "/img/quasar-4.png",  type = "image"},
+  {src = "/img/quasar-5.png",  type = "image"},
 ]
 
 [[extra.nav_links]]
@@ -70,7 +70,7 @@ This provides **maximum resolution**, while the image coverage is limited to the
 The image is formed continuously as the carrier moves, by stitching strips together.
 This mode provides wide terrain coverage throughout the route while maintaining stable detail quality.
 
-![QuaSAR stripmap](/img/quasar-3.jpg)
+![QuaSAR stripmap](/img/quasar-strip.png)
 
 ### Video Stream
 Video mode is implemented as frame-by-frame synthesis of spotlight radar images with temporal sampling: each frame is synthesized independently from a sliding time window of the hologram. The result is encoded in **H.265/HEVC** through FFmpeg with configurable quality parameters (CRF 18-28) and a frame rate of up to 120 fps.
