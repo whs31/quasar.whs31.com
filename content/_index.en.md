@@ -56,6 +56,8 @@ The radar can be carried by crewed and uncrewed fixed-wing aircraft, helicopters
 - **Integration with onboard radio-electronic equipment** over various interfaces;
 - **Operation on Windows and Linux**.
 
+![Corona](/img/corona.png)
+
 ## Features
 
 ### Spotlight Images
