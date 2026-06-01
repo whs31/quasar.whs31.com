@@ -15,12 +15,15 @@
         {% for slide in slides %}
         <div class="slide{% if loop.first %} active{% endif %}">
           {% if slide.type == "video" %}
-          <video autoplay loop muted playsinline preload="auto">
-            <source src="{{ config.base_url ~ slide.src }}" type="video/mp4" />
+          <video autoplay loop muted playsinline preload="none">
+            <source data-src="{{ config.base_url ~ slide.src }}" type="video/mp4" />
           </video>
           {% else %}
           <img
-            src="{{ config.base_url ~ slide.src }}"
+            src="{{ config.base_url ~ slide.src | replace(from=".webp", to="-preview.webp") }}"
+            data-src="{{ config.base_url ~ slide.src }}"
+            decoding="async"
+            {% if loop.first %}fetchpriority="high"{% endif %}
             alt="{% if lang == 'ru' %}QuaSAR — слайд {{ loop.index }}{% else %}QuaSAR slide {{ loop.index }}{% endif %}"
           />
           {% endif %}

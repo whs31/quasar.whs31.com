@@ -1,11 +1,11 @@
 +++
 [extra]
 slides = [
-  {src = "/img/quasar-3.png",  type = "image"},
-  {src = "/img/quasar-6.png",  type = "image"},
-  {src = "/img/quasar-1.png",  type = "image"},
-  {src = "/img/quasar-4.png",  type = "image"},
-  {src = "/img/quasar-5.png",  type = "image"},
+  {src = "/img/quasar-3.webp", type = "image"},
+  {src = "/img/quasar-6.webp", type = "image"},
+  {src = "/img/quasar-1.webp", type = "image"},
+  {src = "/img/quasar-4.webp", type = "image"},
+  {src = "/img/quasar-5.webp", type = "image"},
 ]
 
 [[extra.nav_links]]
@@ -30,17 +30,17 @@ href = "/en/publications/"
 
 The system is designed to generate **high-detail radar images** of terrain areas regardless of illumination and atmospheric conditions, including fog, cloud cover, and precipitation.
 
-<img src="/img/complex_en.png" alt="SAR system diagram" style="width:100%" /><br />
+<img src="/img/complex_en.webp" alt="SAR system diagram" loading="lazy" decoding="async" style="width:100%" /><br />
 
 The radar can be carried by crewed and uncrewed fixed-wing aircraft, helicopters, and multicopters with payload capacity above 2 kg.
 
 <div class="installation-grid">
-  <img src="/img/installation_1.png" alt="Radar installation on carrier 1" />
-  <img src="/img/installation_2.png" alt="Radar installation on carrier 2" />
-  <img src="/img/installation_3.png" alt="Radar installation on carrier 3" />
-  <img src="/img/installation_4.png" alt="Radar installation on carrier 4" />
-  <img src="/img/installation_5.png" alt="Radar installation on carrier 5" />
-  <img src="/img/installation_6.png" alt="Radar installation on carrier 6" />
+  <img src="/img/installation_1.webp" alt="Radar installation on carrier 1" loading="lazy" decoding="async" />
+  <img src="/img/installation_2.webp" alt="Radar installation on carrier 2" loading="lazy" decoding="async" />
+  <img src="/img/installation_3.webp" alt="Radar installation on carrier 3" loading="lazy" decoding="async" />
+  <img src="/img/installation_4.webp" alt="Radar installation on carrier 4" loading="lazy" decoding="async" />
+  <img src="/img/installation_5.webp" alt="Radar installation on carrier 5" loading="lazy" decoding="async" />
+  <img src="/img/installation_6.webp" alt="Radar installation on carrier 6" loading="lazy" decoding="async" />
 </div>
 
 ### Operating Modes
@@ -56,7 +56,7 @@ The radar can be carried by crewed and uncrewed fixed-wing aircraft, helicopters
 - **Integration with onboard radio-electronic equipment** over various interfaces;
 - **Operation on Windows and Linux**.
 
-![Corona](/img/corona.png)
+<img src="/img/corona.webp" alt="Corona" loading="lazy" decoding="async" />
 
 ## Features
 
@@ -65,31 +65,31 @@ The radar can be carried by crewed and uncrewed fixed-wing aircraft, helicopters
 In spotlight mode, the image is formed within the antenna beam.
 This provides **maximum resolution**, while the image coverage is limited to the area captured by the radar antenna beam.
 
-![QuaSAR spotlight](/img/quasar-telescopic.png)
+<img src="/img/quasar-telescopic.webp" alt="QuaSAR spotlight" loading="lazy" decoding="async" />
 
 ### Stripmap Images
 
 The image is formed continuously as the carrier moves, by stitching strips together.
 This mode provides wide terrain coverage throughout the route while maintaining stable detail quality.
 
-![QuaSAR stripmap](/img/quasar-strip.png)
-![Quasar stripmap](/img/quasar-strip-2.png)
+<img src="/img/quasar-strip.webp" alt="QuaSAR stripmap" loading="lazy" decoding="async" />
+<img src="/img/quasar-strip-2.webp" alt="Quasar stripmap" loading="lazy" decoding="async" />
 
 ### Video Stream
 Video mode is implemented as frame-by-frame synthesis of spotlight radar images with temporal sampling: each frame is synthesized independently from a sliding time window of the hologram. The result is encoded in **H.265/HEVC** through FFmpeg with configurable quality parameters (CRF 18-28) and a frame rate of up to 120 fps.
 
-<video src="/video/quasar-video-2.mp4" controls muted playsinline autoplay loop style="width:100%;border-radius:8px"></video>
-<video src="/video/quasar-video.mp4" controls muted playsinline autoplay loop style="width:100%;border-radius:8px"></video>
+<video data-lazy-video data-src="/video/quasar-video-2.mp4" poster="/img/quasar-video-2-poster.webp" preload="none" controls muted playsinline loop style="width:100%;border-radius:8px"></video>
+<video data-lazy-video data-src="/video/quasar-video.mp4" poster="/img/quasar-video-poster.webp" preload="none" controls muted playsinline loop style="width:100%;border-radius:8px"></video>
 
 ### Object Recognition
 The system includes an object recognition module based on the **YOLO11 OBB** neural network. Unlike standard detectors, the OBB model accounts for object rotation angle, which is critical for radar imagery.
 
 The recognition module automatically labels objects in radar images, such as equipment, vehicles, and buildings.
 
-![QuaSAR YOLO](/img/quasar-yolo.png)
+<img src="/img/quasar-yolo.webp" alt="QuaSAR YOLO" loading="lazy" decoding="async" />
 
 ## Supported Platforms
-<video src="/video/video_2026-06-01_08-09-51.mp4" controls muted playsinline autoplay loop style="width:100%;border-radius:8px"></video>
+<video data-lazy-video data-src="/video/video_2026-06-01_08-09-51.mp4" poster="/img/platforms-video-poster.webp" preload="none" controls muted playsinline loop style="width:100%;border-radius:8px"></video>
 
 The software package is designed as a cross-platform solution with a focus on embedded systems and runs successfully on a wide range of devices.
 

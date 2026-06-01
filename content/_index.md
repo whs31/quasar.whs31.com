@@ -1,11 +1,11 @@
 +++
 [extra]
 slides = [
-  {src = "/img/quasar-3.png",  type = "image"},
-  {src = "/img/quasar-6.png",  type = "image"},
-  {src = "/img/quasar-1.png",  type = "image"},
-  {src = "/img/quasar-4.png",  type = "image"},
-  {src = "/img/quasar-5.png",  type = "image"},
+  {src = "/img/quasar-3.webp", type = "image"},
+  {src = "/img/quasar-6.webp", type = "image"},
+  {src = "/img/quasar-1.webp", type = "image"},
+  {src = "/img/quasar-4.webp", type = "image"},
+  {src = "/img/quasar-5.webp", type = "image"},
 ]
 
 [[extra.nav_links]]
@@ -34,18 +34,18 @@ href = "/publications/"
 Комплекс предназначен для формирования **высокодетальных радиолокационных изображений** участков земной
 поверхности вне зависимости от условий освещенности и состояния атмосферы (туман, облачность, осадки).
 
-<img src="/img/complex_ru.png" alt="Схема РЛС" style="width:100%" /><br />
+<img src="/img/complex_ru.webp" alt="Схема РЛС" loading="lazy" decoding="async" style="width:100%" /><br />
 
 В качестве **носителей** РЛС могут выступать пилотируемые и беспилотные летательные аппараты самолетного и
 вертолетного типов, а также мультикоптеры с массой полезной нагрузки более 2 кг.
 
 <div class="installation-grid">
-  <img src="/img/installation_1.png" alt="Установка РЛС на носитель 1" />
-  <img src="/img/installation_2.png" alt="Установка РЛС на носитель 2" />
-  <img src="/img/installation_3.png" alt="Установка РЛС на носитель 3" />
-  <img src="/img/installation_4.png" alt="Установка РЛС на носитель 4" />
-  <img src="/img/installation_5.png" alt="Установка РЛС на носитель 5" />
-  <img src="/img/installation_6.png" alt="Установка РЛС на носитель 6" />
+  <img src="/img/installation_1.webp" alt="Установка РЛС на носитель 1" loading="lazy" decoding="async" />
+  <img src="/img/installation_2.webp" alt="Установка РЛС на носитель 2" loading="lazy" decoding="async" />
+  <img src="/img/installation_3.webp" alt="Установка РЛС на носитель 3" loading="lazy" decoding="async" />
+  <img src="/img/installation_4.webp" alt="Установка РЛС на носитель 4" loading="lazy" decoding="async" />
+  <img src="/img/installation_5.webp" alt="Установка РЛС на носитель 5" loading="lazy" decoding="async" />
+  <img src="/img/installation_6.webp" alt="Установка РЛС на носитель 6" loading="lazy" decoding="async" />
 </div>
 
 ### Режимы работы
@@ -67,7 +67,7 @@ href = "/publications/"
 - **Сопряжение с бортовым РЭО** по различным интерфейсам;
 - **Работу на ОС Windows и Linux**.
 
-![Corona](/img/corona.png)
+<img src="/img/corona.webp" alt="Corona" loading="lazy" decoding="async" />
 
 ## Возможности
 
@@ -76,31 +76,31 @@ href = "/publications/"
 В телескопическом режиме изображение формируется в пределах луча диаграммы направленности антенны.
 Это позволяет достичь **максимальной разрешающей способности**, однако охват изображения ограничен поверхностью, захватываемой лучом диаграммы направленности антенны радара.
 
-![Quasar telescopic](/img/quasar-telescopic.png)
+<img src="/img/quasar-telescopic.webp" alt="Quasar telescopic" loading="lazy" decoding="async" />
 
 ### Полосовые изображения
 
 Изображение формируется непрерывно по мере движения носителя («склеивается» из полос).
 Режим обеспечивает широкий охват земной поверхности на протяжении всего маршрута при сохранении стабильного качества детализации.
 
-![Quasar strip](/img/quasar-strip.png)
-![Quasar strip](/img/quasar-strip-2.png)
+<img src="/img/quasar-strip.webp" alt="Quasar strip" loading="lazy" decoding="async" />
+<img src="/img/quasar-strip-2.webp" alt="Quasar strip" loading="lazy" decoding="async" />
 
 ### Видеопоток
 Видеорежим реализован в виде покадрового синтезирования телескопических радиолокационных изображений с временной выборкой: каждый кадр синтезируется независимо из скользящего временного окна голограммы. Результат кодируется в **H.265/HEVC** через FFmpeg с настраиваемыми параметрами качества (CRF 18–28) и частотой до 120 кадров/сек.
 
-<video src="/video/quasar-video-2.mp4" controls muted playsinline autoplay loop style="width:100%;border-radius:8px"></video>
-<video src="/video/quasar-video.mp4" controls muted playsinline autoplay loop style="width:100%;border-radius:8px"></video>
+<video data-lazy-video data-src="/video/quasar-video-2.mp4" poster="/img/quasar-video-2-poster.webp" preload="none" controls muted playsinline loop style="width:100%;border-radius:8px"></video>
+<video data-lazy-video data-src="/video/quasar-video.mp4" poster="/img/quasar-video-poster.webp" preload="none" controls muted playsinline loop style="width:100%;border-radius:8px"></video>
 
 ### Распознавание объектов
 В состав комплекса интегрирован модуль распознавания объектов на базе нейросети **YOLO11 OBB**. В отличие от стандартных детекторов, OBB-модель учитывает угол поворота объектов, что критически важно для радиолокационных снимков. 
 
 Модуль распознавания автоматически маркирует на радиолокационном изображении объекты (например, технику, транспортные средства, строения).
 
-![Quasar yolo](/img/quasar-yolo.png)
+<img src="/img/quasar-yolo.webp" alt="Quasar yolo" loading="lazy" decoding="async" />
 
 ## Поддерживаемые платформы
-<video src="/video/video_2026-06-01_08-09-51.mp4" controls muted playsinline autoplay loop style="width:100%;border-radius:8px"></video>
+<video data-lazy-video data-src="/video/video_2026-06-01_08-09-51.mp4" poster="/img/platforms-video-poster.webp" preload="none" controls muted playsinline loop style="width:100%;border-radius:8px"></video>
 
 Программный комплекс спроектирован как кроссплатформенное решение с акцентом на встраиваемые системы и успешно функционирует на широком спектре устройств.
 
