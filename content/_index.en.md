@@ -73,6 +73,7 @@ The image is formed continuously as the carrier moves, by stitching strips toget
 This mode provides wide terrain coverage throughout the route while maintaining stable detail quality.
 
 ![QuaSAR stripmap](/img/quasar-strip.png)
+![Quasar stripmap](/img/quasar-strip-2.png)
 
 ### Video Stream
 Video mode is implemented as frame-by-frame synthesis of spotlight radar images with temporal sampling: each frame is synthesized independently from a sliding time window of the hologram. The result is encoded in **H.265/HEVC** through FFmpeg with configurable quality parameters (CRF 18-28) and a frame rate of up to 120 fps.
@@ -88,6 +89,8 @@ The recognition module automatically labels objects in radar images, such as equ
 ![QuaSAR YOLO](/img/quasar-yolo.png)
 
 ## Supported Platforms
+<video src="/video/video_2026-06-01_08-09-51.mp4" controls muted playsinline autoplay loop style="width:100%;border-radius:8px"></video>
+
 The software package is designed as a cross-platform solution with a focus on embedded systems and runs successfully on a wide range of devices.
 
 ##### NVIDIA Jetson Orin Family
