@@ -54,6 +54,13 @@
             <i class="icon fa fa-envelope" aria-hidden="true"></i>
           </a>
         </div>
+        <a
+          class="header-email"
+          aria-label="{% if lang == 'ru' %}Электронная почта{% else %}Email{% endif %}"
+          href="mailto:{{ config.extra.email }}"
+        >
+          {{ config.extra.email }}
+        </a>
         <div class="header-links">
           {% for link in section.extra.nav_links | default(value=[]) %}
             {% if link.anchor %}

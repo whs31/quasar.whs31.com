@@ -74,6 +74,41 @@
   }
 }
 
+.header-email {
+  display: inline-block;
+  max-width: calc(100vw - 40px);
+  margin: 3px auto 0;
+  padding: 3px 10px 5px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 13px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.42);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+  transition:
+    color 0.3s ease-out,
+    background-color 0.3s ease-out,
+    border-color 0.3s ease-out,
+    text-shadow 0.3s ease-out;
+
+  &:hover,
+  &:focus {
+    color: $main;
+    background: #FFF;
+    border-color: #FFF;
+    text-shadow: none;
+    outline: none;
+  }
+
+  @media only screen and (min-width:$cut) {
+    margin-top: 5px;
+    padding: 4px 12px 6px;
+    font-size: 16px;
+  }
+}
+
 .down {
   color: #FFF;
   position: absolute;
